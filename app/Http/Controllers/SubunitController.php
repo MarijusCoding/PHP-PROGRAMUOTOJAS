@@ -44,16 +44,28 @@ class SubunitController extends Controller
                             ->first();
 
             if ($main === NULL) {
-                // echo "Neatitiko (susikerta datos)";
+                // echo "Neatitiko (susikerta datos) arba ner iraso";
                 return Redirect::back()
                                 ->withErrors('This date is occupied');
             }
             else {
-                // echo "Nesusikerta datos!!!!!<br><br>";
-                // echo "Startas: ".$request->input('start_date')."<br>";
-                // echo "Pabaiga: ".$request->input('end_date')."<br>";
-                // ATITIKO DATOS 
-                $subunit = Subunit::where('');
+                //ATITIKO DATOS 
+                echo "Nesusikerta datos!!!!!<br><br>";
+                echo "Startas: ".$request->input('start_date')."<br>";
+                echo "Pabaiga: ".$request->input('end_date')."<br>";
+                $subunit = Subunit::where('subunit', $request->input('main_truck'))
+                                    ->where('end_date', '<=', $request->input('start_date'))
+                                    ->first();
+                if ($subunit === NULL) {
+                    // ner priskirto subunito kito arba ner iraso
+                    Subunit::create([
+                        'main_truck' => $request->input('main_truck'),
+                        'subunit' => $request->input('subunit'),
+                        'start_date' => $request->input('start_date'),
+                        'end_date' => $request->input('end_date'),
+                    ]);
+                    echo "A";
+                }
             }
         }
         else {
@@ -63,7 +75,7 @@ class SubunitController extends Controller
                 'start_date' => $request->input('start_date'),
                 'end_date' => $request->input('end_date'),
             ]);
-            echo " Sukurtas irasas";
+            echo " Sukurtas irasas B";
         }
         
         
