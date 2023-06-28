@@ -64,7 +64,9 @@ class SubunitController extends Controller
                         'start_date' => $request->input('start_date'),
                         'end_date' => $request->input('end_date'),
                     ]);
-                    echo "A";
+                    return view('subunit.index', [
+                        'msg' => 'Subunit assigned successfully'
+                    ]);
                 }
             }
         }
@@ -75,7 +77,9 @@ class SubunitController extends Controller
                 'start_date' => $request->input('start_date'),
                 'end_date' => $request->input('end_date'),
             ]);
-            echo " Sukurtas irasas B";
+            return view('subunit.index', [
+                'msg' => 'Subunit assigned successfully'
+            ]);
         }
         
         

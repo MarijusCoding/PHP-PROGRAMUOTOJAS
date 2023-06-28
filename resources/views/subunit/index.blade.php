@@ -30,6 +30,9 @@
                     </ul>
                 </div>
             @endif
+            @if (!empty($msg))
+            <p class="pt-2 text-green-500">{{ $msg }}</p>
+            @endif
         </form>
     </div>
     <div class="container mx-auto text-center pt-5">
