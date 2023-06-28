@@ -53,7 +53,7 @@ class SubunitController extends Controller
                 // echo "Startas: ".$request->input('start_date')."<br>";
                 // echo "Pabaiga: ".$request->input('end_date')."<br>";
                 // ATITIKO DATOS 
-                $subunit = Subunit::where('')
+                $subunit = Subunit::where('');
             }
         }
         else {
